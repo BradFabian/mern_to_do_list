@@ -12,3 +12,5 @@ const ToDoSchema = new Schema({
     default: Date.now
   }
 });
+
+module.exports = Item = mongoose.model("todo", ToDoSchema);
