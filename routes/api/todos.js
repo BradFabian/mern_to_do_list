@@ -11,12 +11,19 @@ const Todo = require("../../models/Todos");
 router.get("/", (req, res) => {
   Todo.find()
     .sort({ date: -1 })
-    .then(todos => res.json(items));
+    .then(todos => res.json(todos));
 });
 
 // @route Post api/todos
 // @desc Create A Post
 // @access Public
+router.post("/", (req, res) => {
+  const newTodo = new Todo({
+    todo: req.body.todo
+  });
+
+  newTodo.save().then(todo => res.json(todo));
+});
 
 // @route DELETE api/todos/:id
 // @desc Delete A Todo
