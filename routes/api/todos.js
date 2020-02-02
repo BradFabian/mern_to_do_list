@@ -11,7 +11,7 @@ const Todo = require("../../models/Todos");
 router.get("/", (req, res) => {
   Todo.find()
     .sort({ date: -1 })
-    .then(todos => res.json(items));
+    .then(todos => res.json(todos));
 });
 
 // @route Post api/todos
