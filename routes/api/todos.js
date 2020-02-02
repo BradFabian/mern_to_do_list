@@ -17,6 +17,13 @@ router.get("/", (req, res) => {
 // @route Post api/todos
 // @desc Create A Post
 // @access Public
+router.post("/", (req, res) => {
+  const newTodo = new Todo({
+    todo: req.body.todo
+  });
+
+  newTodo.save().then(todo => res.json(todo));
+});
 
 // @route DELETE api/todos/:id
 // @desc Delete A Todo
