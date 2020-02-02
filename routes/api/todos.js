@@ -28,6 +28,11 @@ router.post("/", (req, res) => {
 // @route DELETE api/todos/:id
 // @desc Delete A Todo
 // @access Public
+router.delete("/:id", (req, res) => {
+  Todo.findByIdAndRemove()
+    .remove({ _id: req.params.id })
+    .then(todos => res.json(todos));
+});
 
 // @route Update api/todos/:id
 // @desc Update A Todo
