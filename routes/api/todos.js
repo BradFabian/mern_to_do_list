@@ -34,8 +34,16 @@ router.delete("/:id", (req, res) => {
     .then(todos => res.json(todos));
 });
 
-// @route Update api/todos/:id
+// @route GET api/todos/:id
 // @desc Update A Todo
 // @access Public
+router.put(":/id", (req, res) => {
+  Todo.findByIdAndUpdate(req.params.id, req.body)
+    .then(todo => res.json({ msg: 'Updated successfully'}))
+    .catch(err =>
+      res.status(400).json({ error: 'Unable to update the Database' })
+    );
+});
+
 
 module.exports = router;
